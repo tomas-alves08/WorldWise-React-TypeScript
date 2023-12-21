@@ -1,35 +1,35 @@
 import { FC } from "react";
 import styles from "./CityItem.module.css";
 import { ICity } from "../models/app-models";
+import { formatDate } from "../utils";
 import { Link } from "react-router-dom";
+import { useCities } from "../contexts/CitiesContext";
 
 interface CityItemProps {
   city: ICity;
 }
 
-const formatDate = (date: string) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(date));
-
 const CityItem: FC<CityItemProps> = ({ city }) => {
-  const { cityName, emoji, date, id, position } = city;
-  console.log(date);
-
+  const { currentCity, deleteCity } = useCities();
+  const { cityName, date, position, emoji, id } = city;
   const formattedDate = date !== "" && formatDate(date);
 
   return (
     <li>
       <Link
-        to={`${id}?lat=${position.lat}&lng=${position.lng}`}
-        className={styles.cityItem}
+        to={`${id}?lat=${position?.lat}&lng=${position?.lng}`}
+        className={`${styles.cityItem} ${
+          id === Number(currentCity?.id) ? styles["cityItem--active"] : ""
+        }`}
       >
         <span className={styles.emoji}>{emoji}</span>
         <h3 className={styles.name}>{cityName}</h3>
         <time className={styles.date}>({formattedDate})</time>
-        <button className={styles.deleteBtn}>&times;</button>
+        <Link to={``}>
+          <button className={styles.deleteBtn} onClick={() => deleteCity(id)}>
+            &times;
+          </button>
+        </Link>
       </Link>
     </li>
   );

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Product from "./pages/Product";
 import Homepage from "./pages/Homepage";
@@ -9,38 +9,11 @@ import AppLayout from "./pages/AppLayout";
 import CityList from "./components/CityList";
 import City from "./components/City";
 import Form from "./components/Form";
-import { ICity } from "./models/app-models";
 import CountryList from "./components/CountryList";
-
-const BASE_URL = "http://localhost:9000";
+import { useCities } from "./contexts/CitiesContext";
 
 const App: FC = () => {
-  const [cities, setCities] = useState<ICity[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
-
-  useEffect(() => {
-    const fetchCities = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`${BASE_URL}/cities`);
-        if (!response.ok)
-          throw new Error(
-            "Something went wrong with the fetching of the cities"
-          );
-
-        const data = await response.json();
-
-        setCities(data);
-        setError("");
-      } catch (err) {
-        console.error("Error: " + err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCities();
-  }, []);
+  const { error } = useCities();
 
   if (error !== "") return <h1>{error}</h1>;
 
@@ -52,18 +25,9 @@ const App: FC = () => {
         <Route path="pricing" element={<Pricing />} />
         <Route path="app" element={<AppLayout />}>
           <Route index element={<Navigate replace to="cities" />} />
-          <Route
-            path="cities"
-            element={<CityList cities={cities} loading={loading} />}
-          />
-          <Route
-            path="cities/:id/"
-            element={<City cities={cities} loading={loading} />}
-          />
-          <Route
-            path="countries"
-            element={<CountryList cities={cities} loading={loading} />}
-          />
+          <Route path="cities" element={<CityList />} />
+          <Route path="cities/:id/" element={<City />} />
+          <Route path="countries" element={<CountryList />} />
           <Route path="form" element={<Form />} />
         </Route>
         <Route path="login" element={<Login />} />

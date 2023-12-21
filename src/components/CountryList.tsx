@@ -3,23 +3,17 @@ import styles from "./CountryList.module.css";
 import { ICity, ICountry } from "../models/app-models";
 import Spinner from "./Spinner";
 import CountryItem from "./CountryItem";
+import { useCities } from "../contexts/CitiesContext";
 
-interface CountryListProps {
-  cities: ICity[] | null;
-  loading: boolean;
-}
-
-const CountryList: FC<CountryListProps> = ({ cities, loading }) => {
+const CountryList: FC = () => {
+  const { cities, loading } = useCities();
   if (loading) return <Spinner />;
 
   const countries = cities?.reduce((acc: ICountry[], cur: ICity) => {
-    console.log(cur);
     if (!acc.map((city) => city.country).includes(cur.country))
       return [...acc, { country: cur.country, emoji: cur.emoji, id: cur.id }];
     return acc;
   }, []);
-
-  console.log(countries);
 
   return (
     <ul className={styles.countryList}>

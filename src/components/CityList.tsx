@@ -1,16 +1,12 @@
 import { FC } from "react";
 import styles from "./CityList.module.css";
-import { ICity } from "../models/app-models";
 import Spinner from "./Spinner";
 import CityItem from "./CityItem";
 import Message from "./Message";
+import { useCities } from "../contexts/CitiesContext";
 
-interface CityListProps {
-  cities: ICity[] | null;
-  loading: boolean;
-}
-
-const CityList: FC<CityListProps> = ({ cities, loading }) => {
+const CityList: FC = () => {
+  const { cities, loading } = useCities();
   if (loading) return <Spinner />;
   if (!cities)
     return (

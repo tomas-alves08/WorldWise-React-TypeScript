@@ -27,38 +27,62 @@
     {
       "cityName": "Berlin",
       "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
-      "cityName": "Faro",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 739303
-    },
-    {
-      "cityName": "Barcelona",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "emoji": "DE",
+      "date": "2023-12-21T00:49:42.024Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": 52.50451953251202,
+        "lng": 13.330078572034838
       },
-      "id": 178067
+      "id": 69.046493174552
+    },
+    {
+      "cityName": "Dillingen a.d.Donau",
+      "country": "Germany",
+      "emoji": "DE",
+      "date": "2023-12-21T00:54:12.313Z",
+      "notes": "",
+      "position": {
+        "lat": 48.60385760823255,
+        "lng": 10.546875000000002
+      },
+      "id": 85.99518011330092
+    },
+    {
+      "cityName": "Nurnberg",
+      "country": "Germany",
+      "emoji": "DE",
+      "date": "2023-12-21T00:54:31.860Z",
+      "notes": "",
+      "position": {
+        "lat": 49.43241258024849,
+        "lng": 11.041259765625002
+      },
+      "id": 53.01582489739556
+    },
+    {
+      "cityName": "Munich",
+      "country": "Germany",
+      "emoji": "DE",
+      "date": "2023-12-21T00:54:51.494Z",
+      "notes": "",
+      "position": {
+        "lat": 48.09275716032736,
+        "lng": 11.601562500000002
+      },
+      "id": 32.90047156362588
+    },
+    {
+      "cityName": "Sevilla",
+      "country": "Spain",
+      "emoji": "ES",
+      "date": "2023-12-21T00:58:38.841Z",
+      "notes": "",
+      "position": {
+        "lat": 37.405073750176925,
+        "lng": -6.020507812500001
+      },
+      "id": 47.295279976902435
     }
   ]
 }
